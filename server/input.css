@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Default global styles */
+html button, html input, html select {
+    border: 1px solid grey;
+    border-radius: .2rem;
+    padding: .2rem;
+    padding-left: .3rem;
+    padding-right: .3rem;
+}
+
+html table td {
+    border: 1px solid lightgrey;
+    padding: .2rem .5rem .2rem .5rem;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: bold;
+}
+
+li {
+    padding-left: .5rem;
+    display: flex;
+    align-items: center;
+}
+li::before {
+    content: "-";
+    margin-right: .5rem;
+}
+.button-checkbox {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-flex;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    position: relative;
+    font-size: .5rem;
+    text-align: center;
+}
+
+.non-interactable {
+    pointer-events: none;
+    animation: hx-eased-loading .4s forwards;
+}
+
+@keyframes hx-eased-loading {
+    to { opacity: .35; }
+}
