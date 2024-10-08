@@ -16,8 +16,6 @@ app:
     - "*~" # Any temporary backup files IDEs might use.
     - node_modules/*
     - eslint.config.mjs
-    - postcss.config.js
-    - tailwind.config.js
   dir-cmd: "./"
   dir-work:
   host: "http://127.0.0.1:8080"
@@ -26,11 +24,30 @@ app:
 custom-watchers:
   - name: "Bundle CSS"
     cmd: npm run build:css
-    include: ["*.templ", "server/input.css"]
+    include:
+      - "*.templ"
+      - "server/input.css"
+      - "tailwind.config.js"
+      - "postcss.config.js"
     exclude: ["server/public/*"]
     fail-on-error: true
     debounce:
     requires: # no action, "Bundle Changed" will do the reloading
+  - name: Bundle JS
+    cmd: npm run build:js
+    include: ["*.js"]
+    exclude: ["server/public/*"]
+    fail-on-error: true
+    debounce:
+    # reload browser after successful bundling
+    requires: # no action, "Bundle Changed" will do the reloading
+  - name: Bundle Changed
+    cmd: # Just rebuild
+    include: ["server/public/*"]
+    exclude:
+    fail-on-error:
+    debounce:
+    requires: rebuild
   - name: Bundle Changed
     cmd: # Just rebuild
     include: ["server/public/*"]

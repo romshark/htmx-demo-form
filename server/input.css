@@ -3,12 +3,14 @@
 @tailwind utilities;
 
 /* Default global styles */
-html button, html input, html select {
+html button, html input, html select, html textarea {
     border: 1px solid grey;
     border-radius: .2rem;
     padding: .2rem;
     padding-left: .3rem;
     padding-right: .3rem;
+    height: 2rem;
+    background-color: transparent;
 }
 
 html table td {
