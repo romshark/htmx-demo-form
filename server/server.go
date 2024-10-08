@@ -2,7 +2,6 @@ package server
 
 import (
 	"embed"
-	"fmt"
 	"log/slog"
 	"net/http"
 	"sort"
@@ -148,7 +147,6 @@ func (s *Server) handlePostForm(w http.ResponseWriter, r *http.Request) {
 	var f template.Form
 	f.UnmarshalForm(r)
 	f.ResetErrorsForZero()
-	fmt.Println(f)
 	if err := template.RenderComponentForm(
 		r.Context(), w,
 		f, s.addressCountryOptions, s.shippingCompanyOptions,

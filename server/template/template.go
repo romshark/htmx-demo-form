@@ -2,7 +2,6 @@ package template
 
 import (
 	"context"
-	"fmt"
 	"io"
 	"time"
 
@@ -114,8 +113,6 @@ func (f *Form) UnmarshalForm(source interface{ FormValue(string) string }) {
 		f.ErrorLastName = err.Error()
 	}
 
-	fmt.Println("EMAIL:", f.ValueEmail)
-	fmt.Println(domain.NewEmail(f.ValueEmail))
 	if f.ParsedEmail, err = domain.NewEmail(f.ValueEmail); err != nil {
 		f.ErrorEmail = err.Error()
 	}
